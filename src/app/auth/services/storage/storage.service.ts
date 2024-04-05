@@ -20,13 +20,15 @@ export class StorageService {
     window.localStorage.setItem(USER, JSON.stringify(user));
   }
 
+  static getUserId(): string {
+    const user = this.getUser();
+    if(user == null) { return ''; }
+    return user.id;
+  }
+
   static getToken() {
     return window.localStorage.getItem(TOKEN);
   }
-
-  // static getUser() {
-  //   return JSON.parse(localStorage.getItem(USER));
-  // }
 
   static getUser() {
     const userJson = localStorage.getItem(USER);
